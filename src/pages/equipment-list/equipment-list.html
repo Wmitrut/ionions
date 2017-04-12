@@ -1,0 +1,45 @@
+<!--
+  Generated template for the EquipmentList page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Listagem de Equipamentos</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+
+  <ion-card >
+  <ion-card-header>
+    <h1 color="primary" style="font-weight: bold;">Listagem de Equipamentos</h1>
+  </ion-card-header>
+  <ion-searchbar placeholder="Busque aqui" autofocus style="
+    background: #4aa3df;"></ion-searchbar>
+      <ion-card-content style="padding: 0;">
+        <ion-list>
+          <ion-item *ngFor="let equipment of equipments" class="list_item">    
+            <ion-row>
+              <ion-col col-11>
+                  <span style="font-weight: bold;">{{equipment.leqNome}}</span><br>
+                  <span style="font-size: 12px; color:#b5b5b5 ">Código: {{equipment.leqCodigo}}</span>
+              </ion-col>  
+                <ion-col col-1 style="display: inline; text-align: right;">
+                  <button ion-button icon-only (click)="presentOptions($event, equipment)" clear>
+                    <ion-icon name="more" style="color: #666;"></ion-icon>
+                  </button>                 
+              </ion-col>
+            </ion-row>   
+          </ion-item>          
+       </ion-list>
+      </ion-card-content>
+  </ion-card>
+
+
+</ion-content>

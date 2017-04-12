@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      About
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding >
+  <ion-tabs color="light" tabsPlacement="top">
+    <ion-tab [root]="tab1Listagem" tabTitle="Listagem" ></ion-tab>
+    <ion-tab [root]="tab2Cadastro" tabTitle="Cadastro"></ion-tab>
+  </ion-tabs>
+</ion-content>
