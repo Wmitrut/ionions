@@ -25,10 +25,11 @@ export class EquipmentListPage {
   }
 
  presentOptions(myEvent, equipment) {
-    let popover = this.popoverCtrl.create(ListOptionsPage);
-    
+    const params = { equipment: equipment };
+    let popover = this.popoverCtrl.create(ListOptionsPage, params);
+
     popover.present({
-      ev: myEvent, 
+      ev: myEvent
     });
   }
 }
