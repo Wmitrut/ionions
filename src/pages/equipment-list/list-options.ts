@@ -6,28 +6,25 @@ import { EquipmentService } from '../../providers/equipment-service';
 @Component({
   template: `
     <ion-list>
-      <button ion-item (click)="showAlertEdit(equipment)">Editar Equipamento</button>
-      <button ion-item (click)="showAlertDelete(equipment)">Deletar Equipamento</button>
+      <button ion-item (click)="showAlertEdit()">Editar Equipamento</button>
+      <button ion-item (click)="showAlertDelete()">Deletar Equipamento</button>
     </ion-list>
   `
 })
 export class ListOptionsPage {
-  
-  constructor(public viewCtrl: ViewController, public alertCtrl: AlertController, public equipmentService : EquipmentService, public params: NavParams) {
-    
-  }
 
+  public equipment: any = {};
+  constructor(public viewCtrl: ViewController, public alertCtrl: AlertController, public equipmentService : EquipmentService, public params: NavParams) {
+    this.equipment = this.params.data.equipment;
+  }
 
   close() {
     this.viewCtrl.dismiss();
   }
 
-  
-
-showAlertEdit(equipment) {
-   console.log(equipment);
+  showAlertEdit() {
     let prompt = this.alertCtrl.create({
-      
+
       title: 'Editando Equipamento',
       message: "Altere as informações nos campos abaixo:",
       inputs: [
@@ -42,8 +39,8 @@ showAlertEdit(equipment) {
       buttons: [
         {
           text: 'Salvar',
-          handler: (equipment) => {
-               console.log(equipment);
+          handler: () => {
+            console.log(this.equipment);
           }
         },
         {
@@ -57,27 +54,27 @@ showAlertEdit(equipment) {
     prompt.present();
   }
 
-    showAlertDelete(equipment) {
-    
-    console.log(equipment);
+  showAlertDelete() {
+
     let alert = this.alertCtrl.create({
       title: 'Atenção!',
       subTitle: 'Tem certeza que deseja excluir este registro?',
       buttons: [
-      {
-        text: 'Deletar',
-        handler: () => {
-          //this.equipmentService.deleteEquipment("").subscribe(data => this.params = data);   
+        {
+          text: 'Deletar',
+          handler: () => {
+            console.log('deleting...', this.equipment);
+            //this.equipmentService.deleteEquipment("").subscribe(data => this.params = data);
+          }
+        },
+        {
+          text: 'Cancelar',
+          handler: () => {
+            this.close();
+          }
         }
-      },
-      {
-        text: 'Cancelar',
-        handler: () => {
-          this.close();          
-        }
-      }
-    ]
-  });
+      ]
+    });
     alert.present();
   }
 }
